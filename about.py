@@ -1,8 +1,8 @@
 import streamlit as st
 
 def app():
-    st.subheader('Pondering is a website created for users to')
-    st.subheader('share their valuable thoughts with the world.')
-    st.markdown('Created by: [Ashwani Siwach](https://github.com/Ashwani132003)')
-    st.markdown('Contact via mail: [siwachsahab1@gmail.com]')
+    st.subheader('PROSPER')
+    st.markdown('*みんなのパーキンソン病プラットフォーム*')
+    st.markdown('研究スタート日：2021年4月1日')
+    st.markdown('お問い合わせ: PROSPER事務局[        @gmail.com]')
     
