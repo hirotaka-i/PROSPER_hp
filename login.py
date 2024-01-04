@@ -16,7 +16,7 @@ initialize_firebase()
 def app():
 # Usernm = []
     st.title('アカウント')
-    st.markdown('研究に参加登録する場合は下のドロップダウンメニューから、ユーザー登録をお選びください。')
+    st.markdown('研究に参加登録する場合は下のドロップダウンメニューから、メンバー登録をお選びください。')
     if 'username' not in st.session_state:
         st.session_state.username = ''
     if 'useremail' not in st.session_state:
@@ -59,23 +59,24 @@ def app():
         
     
     if  not st.session_state["signedout"]: # only show if the state is False, hence the button has never been clicked
-        choice = st.selectbox('ログイン/ユーザー登録',['ログイン','ユーザー登録'])
+        choice = st.selectbox('ログイン/メンバー登録',['ログイン','メンバー登録'])
         email = st.text_input('Eメール')
         password = st.text_input('パスワード',type='password')
         
 
         
-        if choice == 'ユーザー登録':
+        if choice == 'メンバー登録':
             password_2 = st.text_input("パスワードをもう一度いれてください",type='password')
             if password != password_2:
                 st.warning('パスワードが一致しません')
             else:
-                st.markdown('# ユーザー登録には同意が必要です')
+                st.markdown('# メンバー登録には同意が必要です')
                 st.markdown('''
 本研究に参加をご希望される方は、「ホーム」の部分にある研究の説明をしている文書（同意説明文書）を
 よく読み、下記の項目についてご確認いただき、同意いただける場合のみ、
-”同意してユーザー登録”のボタンを押してください。
+”同意してメンバー登録”のボタンを押してください。
 [なお、同意説明文書はこちらをクリックしていただいても読むことができます。](https://drive.google.com/file/d/1uAbSyqgNZAFtbrSdAv415FP0wLeg1XrE/view?usp=sharing)
+ご不明な点がございましたら、お問い合わせ先にお気軽にご連絡ください。
 ''')
                 st.markdown('## 同意事項')
                 st.markdown("""
@@ -106,16 +107,17 @@ def app():
 20. この研究の実施体制について
 21. いつでも相談窓口にご相談ください
 \n
-
-私は、上記について十分に説明いたしました。
 """)
+                agree = st.checkbox('私は、上記について十分に説明いたしました。')
 
-                if st.button('同意してユーザー登録'):
-                    user = auth.create_user(email = email, password = password)
-                    
-                    st.success('Account created successfully!')
-                    st.markdown('Please Login using your email and password')
-                    st.balloons()
+                if agree:
+
+                    if st.button('同意してメンバー登録'):
+                        user = auth.create_user(email = email, password = password)
+                        
+                        st.success('Account created successfully!')
+                        st.markdown('Please Login using your email and password')
+                        st.balloons()
         else:
             # st.button('Login', on_click=f)          
             st.button('ログイン', on_click=f)

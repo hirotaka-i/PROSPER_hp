@@ -32,5 +32,6 @@ def app():
 よりよい治療を発展させる研究を目指すコミュニティを構築することを目的に
 この研究を行いたいと考えています。
 より詳しい説明は下記のPDFファイルをご覧ください。印刷もできます。
+[なお、同意説明文書はこちらをクリックしていただいても読むことができます。](https://drive.google.com/file/d/1uAbSyqgNZAFtbrSdAv415FP0wLeg1XrE/view?usp=sharing)
 ''')
     st.markdown(pdf_display, unsafe_allow_html=True)
