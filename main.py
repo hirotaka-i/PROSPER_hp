@@ -29,7 +29,7 @@ class MultiApp:
                 menu_title='PROSPER ',
                 options=['ホーム','ログイン','アンケート','データ','お問い合わせ'],
                 icons=['house-fill','person-circle','trophy-fill','chat-fill','info-circle-fill'],
-                # menu_icon='p-circle',
+                menu_icon='none',
                 default_index=1,
                 styles={
                     "container": {"padding": "5!important","background-color":'white'},
