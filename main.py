@@ -53,14 +53,20 @@ class MultiApp:
         
         if app == "ホーム":
             home.app()
-        if app == "ログイン":
-            login.app()    
-        if app == "アンケート":
-            questions.app()        
-        if app == 'データ':
-            dataviz.app()
-        if app == 'お問い合わせ':
-            about.app()    
+            
+        else:
+
+            # initialize for home.py for registration status
+            st.session_state.registration = False
+            
+            if app == "ログイン":
+                login.app()    
+            if app == "アンケート":
+                questions.app()        
+            if app == 'データ':
+                dataviz.app()
+            if app == 'お問い合わせ':
+                about.app()    
              
           
              
