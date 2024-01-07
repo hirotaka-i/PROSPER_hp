@@ -38,14 +38,16 @@ docker run -p 8081:8080 propser_test
 
 ## Deploy to Google Cloud Run
 Once confirming that the docker image works, we will deploy the app to the google cloud platform.
-First, we need to build the docker image and push it to the google cloud container registry. Then, we will deploy the app to the google cloud run.
+First, we need to build the docker image and push it to the Artifact Registry. 
 ```
 gcloud builds submit --tag gcr.io/prosper1/prosper_hp:v3
-```
+gcloud builds submit --tag asia-northeast1-docker.pkg.dev/prosper1/prosperapp/prosper_hp:v1
 
 ```
+Then we will deploy the app to the Cloud Run.
+```
 gcloud run deploy prosper-hp \
-  --image gcr.io/prosper1/prosper_hp:v3 \
+  --image asia-northeast1-docker.pkg.dev/prosper1/prosperapp/prosper_hp:v1 \
   --platform managed \
   --region asia-northeast1 \
   --allow-unauthenticated --quiet
@@ -55,4 +57,14 @@ gcloud run deploy prosper-hp \
 
 Gratitude to [this youtube playlist](https://www.youtube.com/playlist?list=PLvRfcAN-QbYnxloydunJlfES_m6GblyEt) for the inspiration.
 
+
+
+やることリスト
+* Billing accountの変更
+  * Google Cloud Workspaceの設定（Juntendo mailが動かなかったとき）
+  * Projectの設定
+  * Firebaseの設定
+  * Google Artifactsの設定
+  * Google Formの順天堂フォルダへの移動
+  * Google Formの設定
 
