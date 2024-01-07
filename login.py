@@ -3,6 +3,8 @@ import firebase_admin
 from firebase_admin import firestore
 from firebase_admin import credentials
 from firebase_admin import auth
+import smtplib
+from email.message import EmailMessage
 
 # Function to ensure Firebase is initialized only once
 def initialize_firebase():
@@ -12,6 +14,28 @@ def initialize_firebase():
 
 # Call the initialization function
 initialize_firebase()
+
+
+# Function to send verification email
+def send_verification_email(email):
+    try:
+        link = auth.generate_email_verification_link(email)
+        msg = EmailMessage()
+        msg.set_content(f"このリンクをクリックすることでメンバー登録が完了します: {link}")
+        msg['Subject'] = "PROSPERメンバー登録（Eメールアドレスの確認）"
+        msg['From'] = "prosper-info@juntendo.ac.jp"
+        msg['To'] = email
+
+        # Use smtplib or another email library to send the email
+        with smtplib.SMTP('smtp.example.com', 587) as s:
+            s.starttls()
+            s.login("your-email@example.com", "your-password")
+            s.send_message(msg)
+
+        return "Verification email sent."
+    except Exception as e:
+        return f"An error occurred: {e}"
+
 
 def app():
 # Usernm = []
@@ -109,14 +133,16 @@ def app():
 \n
 """)
                 agree = st.checkbox('私は、上記について十分に説明いたしました。')
+                elink=firebase_admin.auth.generate_email_verification_link(email, action_code_settings=None, app=None)
+                # st.markdown(f'[メール認証リンク]({elink})')
 
                 if agree:
 
                     if st.button('同意してメンバー登録'):
                         user = auth.create_user(email = email, password = password)
-                        
-                        st.success('Account created successfully!')
-                        st.markdown('Please Login using your email and password')
+                        st.success('アカウントがシステムに登録されました')
+                        st.markdown('確認メールを送信しました。メール内容にそって、メンバー登録を完了してください。')
+                        # send_verification_email(email)
                         st.balloons()
         else:
             # st.button('Login', on_click=f)          

@@ -1,7 +1,6 @@
 import streamlit as st
 import base64
 
-
 # Function to convert PDF file to base64
 def get_pdf_file_as_base64(pdf_file_path):
     with open(pdf_file_path, "rb") as pdf_file:
@@ -19,7 +18,6 @@ pdf_display = f'<iframe src="data:application/pdf;base64,{pdf_base64}" width="70
 
 
 
-
 def app():
     st.title('PROPSERについて')
     st.markdown('''
@@ -30,8 +28,29 @@ def app():
 患者さんと医療者が双方向性に、誰もが自分の意志に基づいて研究に参加でき、
 データの収集と利用をオンライン上でオープンに行うことで、
 よりよい治療を発展させる研究を目指すコミュニティを構築することを目的に
-この研究を行いたいと考えています。
-より詳しい説明は下記のPDFファイルをご覧ください。印刷もできます。
-[なお、同意説明文書はこちらをクリックしていただいても読むことができます。](https://drive.google.com/file/d/1uAbSyqgNZAFtbrSdAv415FP0wLeg1XrE/view?usp=sharing)
+この研究を行いたいと考えています。''')
+    
+    # insert a jpeg image (./data/prosper.jpg)
+    st.image('./data/prosper.jpg', width=700)
+
+    st.markdown('''
+この研究に関するより詳しい説明は[こちらの説明文書をご覧ください。](https://drive.google.com/file/d/1uAbSyqgNZAFtbrSdAv415FP0wLeg1XrE/view?usp=sharing)
+ご賛同していただける方は下記ボタンよりメンバー登録にお進みください。                
 ''')
-    st.markdown(pdf_display, unsafe_allow_html=True)
+
+    # a red bottun to go start registration
+    if st.button('同意してメンバー登録'):
+        st.session_state.signedout = True
+        st.session_state.signout = True
+        st.session_state.username = ''
+        st.session_state.useremail = ''
+        st.session_state.password = ''
+        st.session_state.password_2 = ''
+        st.session_state.choice = ''
+        st.session_state.email = ''
+        st.session_state.password = ''
+
+
+
+
+    # st.markdown(pdf_display, unsafe_allow_html=True)

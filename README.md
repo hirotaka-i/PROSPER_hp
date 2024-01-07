@@ -24,7 +24,7 @@ python -m pip install -r requirements.txt
 
 Now you are ready to go! Just run 
 ```
-streamlit run app.py
+streamlit run main.py
 ```
 The stremalit app will be launched in your browser. If you would like to stop the app, just press `Ctrl + C` in the terminal.
 
