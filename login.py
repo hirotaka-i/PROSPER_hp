@@ -6,6 +6,7 @@ from firebase_admin import auth
 import smtplib
 from email.message import EmailMessage
 import email_setting as gmail
+import os
 
 # Function to ensure Firebase is initialized only once
 def initialize_firebase():
@@ -25,7 +26,7 @@ def send_verification_email(email):
         msg = EmailMessage()
         msg.set_content(f"このリンクをクリックすることでメンバー登録が完了し、アンケートに答えられます: {elink}")
         msg['Subject'] = "PROSPERメンバー登録（Eメールアドレスの確認）"
-        # msg['From'] = "prosper-info@juntendo.ac.jp"
+        msg['From'] = gmail.account
         msg['To'] = email
 
         # Use smtplib or another email library to send the email
