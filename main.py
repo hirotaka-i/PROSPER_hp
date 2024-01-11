@@ -8,16 +8,6 @@ st.set_page_config(
         page_title="PROSPER",
 )
 
-button_css = f"""
-<style>
-  div.stButton > button:first-child  {{
-    font-weight  : bold                ;/* 文字：太字                   */
-    border       :  5px solid #f36     ;/* 枠線：ピンク色で5ピクセルの実線 */
-    border-radius: 10px 10px 10px 10px ;/* 枠線：半径10ピクセルの角丸     */
-    background   : #ddd                ;/* 背景色：薄いグレー            */
-  }}
-</style>
-"""
 
 
 class MultiApp:

@@ -2,7 +2,7 @@ import streamlit as st
 from firebase_admin import auth
 import smtplib
 from email.message import EmailMessage
-import email_setting as gmail
+import app_config as app_config
 
 # Function to send verification email
 def send_verification_email(email):
@@ -19,7 +19,7 @@ def send_verification_email(email):
         # Use smtplib or another email library to send the email
         with smtplib.SMTP('smtp.gmail.com', 587) as s:
             s.starttls()
-            s.login(gmail.account, gmail.password)
+            s.login(app_config.account, app_config.password)
             s.send_message(msg)
 
         return st.success(f'{email}に確認メールを送信しました。メール本文のリンクをクリックしてメンバー登録を完了してください。')
@@ -144,6 +144,10 @@ def app():
                             st.error('パスワードは6文字以上で入力してください')
                         elif 'EMAIL_EXISTS' in str(e):
                             st.error('このメールアドレスはすでに登録されています。')
+                        elif 'Error: Invalid email' in str(e):
+                            st.error('メールアドレスの形式が正しくありません。')
+                        elif 'Error: Malformed email address string' in str(e):
+                            st.error('メールアドレスの形式が正しくありません。')
                         else:
                             st.error(f"Error: {e}")
                             st.stop()

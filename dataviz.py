@@ -1,11 +1,10 @@
 import streamlit as st
-from firebase_admin import firestore
 import pandas as pd
 
 def app():
     st.title('パーキンソン病のデータ')
     st.markdown('ここではパーキンソン病のデータを見ることができます。')
-    st.markdown('パーキンソン病難病指定者数')
+    st.markdown('2022年 県別のパーキンソン病難病指定者数')
     # read df
     df=pd.read_csv('data/PDN.csv')
     # display df

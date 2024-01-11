@@ -161,7 +161,7 @@ cython_debug/
 
 # added
 *firebase-admin*.json
-email_setting.py
+app_config.py
 
 # Others
 .DS_Store
