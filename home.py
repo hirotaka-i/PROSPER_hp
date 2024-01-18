@@ -143,11 +143,12 @@ def app():
                         if 'at least 6 character' in str(e):
                             st.error('パスワードは6文字以上で入力してください')
                         elif 'EMAIL_EXISTS' in str(e):
-                            st.error('このメールアドレスはすでに登録されています。')
+                            st.error('このメールアドレスはすでに登録されています。ログインにお進みください')
                         elif 'Error: Invalid email' in str(e):
                             st.error('メールアドレスの形式が正しくありません。')
                         elif 'Error: Malformed email address string' in str(e):
                             st.error('メールアドレスの形式が正しくありません。')
+                        
                         else:
                             st.error(f"Error: {e}")
                             st.stop()

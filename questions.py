@@ -10,8 +10,7 @@ from datetime import datetime
 #     auth.set_custom_user_claims(uid, {})
 #     print(f"Custom claims reset for user: {uid}")
 
-# Function to update Firebase custom claims and open the Google Form
-def handle_form_button_click(uid, form_name, link):
+def record_button_click(uid, form_name):
     # Update custom claims with the current time
     current_date = datetime.now().strftime("%Y-%m-%d")
 
@@ -22,9 +21,6 @@ def handle_form_button_click(uid, form_name, link):
     # Add or update the claim for the specific form
     current_claims[form_name] = current_date
     auth.set_custom_user_claims(uid, current_claims)
-
-    # Open the Google Form
-    webbrowser.open_new_tab(link)
 
 
 def app():
@@ -49,7 +45,7 @@ def app():
         
         st.warning('アンケートには予めメンバーIDが入力されています。こちらは変更せずに次に進んでください\n')
         
-        test_one='このアンケートは最初に一度だけご回答頂いたので結構です。'
+        test_one='このアンケートは最初に一度だけご回答頂いたので結構です。何度もご回答いただく必要はありません。'
         test_rep='このアンケートは何度回答していただいても構いません。現在の状況を教えてください。'
 
         ###
@@ -62,7 +58,9 @@ def app():
         else:
             st.markdown(f'[最後に回答した日時] まだ回答していません')
         if st.button('基本情報アンケートをはじめる'):
-            handle_form_button_click(st.session_state.username, form01, link01)
+            record_button_click(st.session_state.username, form01)
+            st.link_button('アンケートを開く', link01)
+
 
         ###
         st.markdown('#### 経過情報アンケート')
@@ -74,7 +72,8 @@ def app():
         else:
             st.markdown(f'[最後に回答した日時] まだ回答していません')
         if st.button('経過情報アンケートをはじめる'):
-            handle_form_button_click(st.session_state.username, form_keika, link_keika)
+            record_button_click(st.session_state.username, form_keika)
+            st.link_button('アンケートを開く', link_keika)
 
 
         ###
@@ -87,7 +86,8 @@ def app():
         else:
             st.markdown(f'[最後に回答した日時] まだ回答していません')
         if st.button('生活アンケート１をはじめる'):
-            handle_form_button_click(st.session_state.username, form_life1, link_life1)
+            record_button_click(st.session_state.username, form_life1)
+            st.link_button('アンケートを開く', link_life1)
 
         ###
         st.markdown('#### 生活アンケート２')
@@ -99,4 +99,5 @@ def app():
         else:
             st.markdown(f'[最後に回答した日時] まだ回答していません')
         if st.button('生活アンケート２をはじめる'):
-            handle_form_button_click(st.session_state.username, form_life2, link_life2)
+            record_button_click(st.session_state.username, form_life2)
+            st.link_button('アンケートを開く', link_life2)
