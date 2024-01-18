@@ -40,14 +40,13 @@ docker run -p 8081:8080 propser_test
 Once confirming that the docker image works, we will deploy the app to the google cloud platform.
 First, we need to build the docker image and push it to the Artifact Registry. 
 ```
-gcloud builds submit --tag gcr.io/prosper1/prosper_hp:v3
-gcloud builds submit --tag asia-northeast1-docker.pkg.dev/prosper1/prosperapp/prosper_hp:v1
+gcloud builds submit --tag asia-northeast1-docker.pkg.dev/prosper1/prosperapp/prosper_hp:v2
 
 ```
 Then we will deploy the app to the Cloud Run.
 ```
 gcloud run deploy prosper-hp \
-  --image asia-northeast1-docker.pkg.dev/prosper1/prosperapp/prosper_hp:v1 \
+  --image asia-northeast1-docker.pkg.dev/prosper1/prosperapp/prosper_hp:v2 \
   --platform managed \
   --region asia-northeast1 \
   --allow-unauthenticated --quiet

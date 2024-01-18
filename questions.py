@@ -38,7 +38,7 @@ def app():
         
     else:
         user = auth.get_user(st.session_state.username)
-        st.session_state.custom_claims=user.custom_claims
+        st.session_state.custom_claims = user.custom_claims if user.custom_claims else {}
         
         
         # Check command (comment out for production)
@@ -49,8 +49,8 @@ def app():
         
         st.warning('アンケートには予めメンバーIDが入力されています。こちらは変更せずに次に進んでください\n')
         
-        test_one='このアンケートは最初に一度だけご回答ください'
-        test_rep='このアンケートは何度回答していただいても構いません。'
+        test_one='このアンケートは最初に一度だけご回答頂いたので結構です。'
+        test_rep='このアンケートは何度回答していただいても構いません。現在の状況を教えてください。'
 
         ###
         st.markdown('#### 基本情報アンケート')
@@ -61,8 +61,8 @@ def app():
             st.markdown(test_one)
         else:
             st.markdown(f'[最後に回答した日時] まだ回答していません')
-            if st.button('基本情報アンケートをはじめる'):
-                handle_form_button_click(st.session_state.username, form01, link01)
+        if st.button('基本情報アンケートをはじめる'):
+            handle_form_button_click(st.session_state.username, form01, link01)
 
         ###
         st.markdown('#### 経過情報アンケート')
