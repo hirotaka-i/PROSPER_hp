@@ -65,7 +65,7 @@ def app():
         ###
         st.markdown('#### 経過情報アンケート')
         form_keika='keika'
-        link_keika=f'https://docs.google.com/forms/d/e/1FAIpQLSdAG4PcOxFNITy4PbimVyg9Z0SjYqhqssQop0FvzHVJBOev_g/viewform?usp=pp_url&entry.2128319109={st.session_state.username})'
+        link_keika=f'https://docs.google.com/forms/d/e/1FAIpQLSdAG4PcOxFNITy4PbimVyg9Z0SjYqhqssQop0FvzHVJBOev_g/viewform?usp=pp_url&entry.2128319109={st.session_state.username}'
         if form_keika in st.session_state.custom_claims.keys():
             st.markdown(f'[最後に回答した日時] {st.session_state.custom_claims[form_keika]}')
             st.markdown(test_rep)
@@ -79,7 +79,7 @@ def app():
         ###
         st.markdown('#### 生活アンケート１')
         form_life1='mds_updrs1'
-        link_life1=f'https://docs.google.com/forms/d/e/1FAIpQLScue4b3DzDJ--YDEPXY_z7mK4oojFyBy1LgbwLStrDMz6sDfA/viewform?usp=pp_url&entry.1185128633={st.session_state.username})'
+        link_life1=f'https://docs.google.com/forms/d/e/1FAIpQLScue4b3DzDJ--YDEPXY_z7mK4oojFyBy1LgbwLStrDMz6sDfA/viewform?usp=pp_url&entry.1185128633={st.session_state.username}'
         if form_life1 in st.session_state.custom_claims.keys():
             st.markdown(f'[最後に回答した日時] {st.session_state.custom_claims[form_life1]}')
             st.markdown(test_rep)
@@ -92,7 +92,7 @@ def app():
         ###
         st.markdown('#### 生活アンケート２')
         form_life2='mds_updrs2'
-        link_life2=f'https://docs.google.com/forms/d/e/1FAIpQLSc0nmQY5ruw7FKNKcrNOWPff4LniJrz2tCm-gduVi9Bj2PToA/viewform?usp=pp_url&entry.692875108={st.session_state.username})'
+        link_life2=f'https://docs.google.com/forms/d/e/1FAIpQLSc0nmQY5ruw7FKNKcrNOWPff4LniJrz2tCm-gduVi9Bj2PToA/viewform?usp=pp_url&entry.692875108={st.session_state.username}'
         if form_life2 in st.session_state.custom_claims.keys():
             st.markdown(f'[最後に回答した日時] {st.session_state.custom_claims[form_life2]}')
             st.markdown(test_rep)
